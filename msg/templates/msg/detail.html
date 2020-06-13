@@ -1,0 +1,43 @@
+{% extends 'msg/base.html' %}
+{% block title %}<title>{{ post.name }} comment page</title>{% endblock %}
+{% block content %}
+<style>
+  #ctt {
+    border-radius: 5%;
+    border-color: blue;
+    margin-top: 4px;
+  }
+  
+  .bg-none {
+    background: rgb(34,34,55);
+  }
+  
+  #fl {
+    float: left;
+  }
+</style>
+<div class="container">
+{% if ad == post.name_id %}
+<h5 style="color:#e8d361">{{post.name}} comments</h5>
+{% with comments.count as total_comments %}
+ <h6 style="color:#5dad5dc4">
+ {{ total_comments }} comment{{ total_comments|pluralize }}
+ </h6>
+ {{ comment.text|linebreaks }}
+{% endwith %}
+{% for comment in comments %}
+<div id="ctt" class="card text-center bg-none">
+    <h3 id="fl" style="color:#9f8d8db6">Message :</h3>
+    <h4 id="fl" style="color:#9f8d8db6">{{ comment.text|linebreaks }}</h4>
+    <h5 style="color:#9f8d8db6"><cite>by</cite> anonymous [ {{ comment.date_created }} ]</h5>
+    </li>
+</ul>
+</div>
+{% endfor %}
+{% else %}
+<div class="card">
+<h1 style="color:#9f8d8db6">can't view {{post.name}} comments section because you are not the owner </h1>
+</div>
+{% endif %}
+</div>
+{% endblock %}

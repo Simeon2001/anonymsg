@@ -1,0 +1,73 @@
+{% extends 'msg/base.html' %}
+{% block title %}<title>{{ post.text }}</title>{% endblock %}
+{% block content %}
+
+<style>
+  #postt {
+    margin-top: 6px;
+  }
+  #btc {
+    margin-bottom: 4px;
+  }
+  
+  #id_text {
+    float: center;
+    width: 195px;
+    height: 40px;
+    border-radius: 5%;
+  }
+  
+  #commt {
+    border-radius: 5%;
+    float: right;
+    margin-right: 70px;
+    margin-bottom: 30px;
+  }
+  
+  #lar {
+    font-size: 15px;
+  }
+</style>
+<div id="postt"  class="container">
+<div class="card text-center bg-dark">
+<div class="card-body">
+<h1 id="lar" style="color:white">{{post.text}}</h1>
+</div>
+<footer style="color:white" class="blockquote-footer">By<cite title="Source Title">{{post.nickname}}</cite></footer>
+<div class="card-footer text-muted">
+<h3 id="lar" style="color:white">{{post.date_created}}</h3>
+</div>
+{% if user.is_authenticated %}
+<a id="btc" class="btn btn-primary" href="{% url 'comment_lock/' post.id %}">see comment</a>
+{% else %}
+<h1>        </h1>
+{% endif %}
+</div>
+
+
+{% with comments.count as total_comments %}
+ <h2>
+{% if user.is_authenticated %}
+ {{ total_comments }} comment{{ total_comments|pluralize }}
+ </h2>
+{% else %}
+ <h1>        </h1>
+{% endif %}
+{% endwith %}
+<h3 style="color:gold">Write Your Comment</h3>
+<form action="" method="post">
+{{ cform.as_p }}
+{% csrf_token %}
+<input id="commt" style="margin-bottom:6px" class="btn btn-success" type="submit" value="Add comment">
+</form>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+

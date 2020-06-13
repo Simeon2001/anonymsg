@@ -1,0 +1,35 @@
+{% extends 'msg/base.html' %}
+{% load static %}
+{% block content %}
+  <div class="container-fluid card-deck cold ">
+    <div id="cold" class="card">
+      <h1 id="wor">welcome to anony_msg.</h1>
+      <h3 id="war">Let friends write anonymous message to you without knowing who wrote it and see their reaction about you and let them express how they love you.</h3>
+      <div id="grides">
+        <img id="png" src="{% static 'msg/img/user.png' %}">
+        <img id="png" src="{% static 'msg/img/curved2.png' %}">
+        <img id="png" src="{% static 'msg/img/browser.png' %}">
+        <img id="png" src="{% static 'msg/img/curved1.png' %}">
+        <div id="gridess">
+          <img id="png" src="{% static 'msg/img/angry.svg' %}">
+          <img id="png" src="{% static 'msg/img/happy-2.svg' %}">
+          <img id="png" src="{% static 'msg/img/in-love.svg' %}">
+          <img id="png" src="{% static 'msg/img/kissing.svg' %}">
+          <img id="png" src="{% static 'msg/img/unhappy.svg' %}">
+          <img id="png" src="{% static 'msg/img/angry-1.svg' %}">
+          
+        </div>
+        <img id="png" src="{% static 'msg/img/curved3.png' %}">
+        <img id="png" src="{% static 'msg/img/message.png' %}">
+      </div>
+      {% if user.is_authenticated %}
+      <button id="gr"><a id="words" href="{% url 'Home/' %}"> view post</a></button>
+      {% else %}
+      <div id="gride">
+        <button id="gr"><a id="words" href="{% url 'signup' %}">Signup</a></button>
+        <button id="gr"><a id="words" href="{% url 'login' %}">Login</a></button>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'msg/base.html' %}
+{% block content %}
+<style>
+#delete {
+  margin-top: 30px;
+  
+}
+
+.bt {
+  margin-bottom: 4px;
+}
+  
+</style>
+<div id="delete" style="color:#4a4a68" class="card bg-dark container">
+<h1 style="color:white">Delete post</h1>
+ <form action="" method="post">
+     {% csrf_token %}
+     <p style="color:white">Are you sure you want to delete "{{ post.text }}"?</p>
+     <input class="bt btn btn-info" type="submit" value="Confirm" />
+ </form>
+ </div>
+{% endblock %}

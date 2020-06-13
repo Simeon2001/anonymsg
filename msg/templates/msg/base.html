@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+ {% block title %} <title>welcme to anony_msg</title>{% endblock %}
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'msg/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'msg/css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav id="black" class="navbar navbar-expand-lg navbar-dark bg-black static-top navbar-custom">
+    <div class="container">
+      <button type="button" class="btn btn-transparent">
+      <img src="{% static 'msg/img/comment.png' %}" id="comm-img"> <span id="dan" class="badge badge-danger">4</span>
+      </button>
+      <a class="navbar-brand" href="{% url 'ome/' %}">anony_msg</a>
+      
+      <button id="tog" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span id="tog" class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'Home/' %}">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+          {% else %}
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'signup' %}">Signup</a>
+          </li>
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'create' %}">Create New Post</a>
+          </li>
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        
+        {% block content %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'msg/js/jquery.slim.min.js' %}"></script>
+  <script src="{% static 'msg/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'msg/js/vue.min.js' %}"></script>
+  <script src="{% static 'msg/js/style.js' %}"></script>
+
+</body>
+
+</html>

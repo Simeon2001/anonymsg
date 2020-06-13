@@ -1,0 +1,25 @@
+{% extends 'msg/base.html' %}
+{% block content %}
+<html>
+  {% if user.is_authenticated %}
+  <div class="container">
+   <p id="usern">Hi {{ user.username }}!</p>
+   <p id="create"><a href="{% url 'create' %}"><button class="btn btn-success">+ Create Post </button></a></p>
+   
+  {% else %}
+   <p>You are not logged in.</p>
+   <a href="{% url 'login' %}">Log In</a>
+   <a href="{% url 'signup' %}">Signup</a>
+  {% endif %}
+  
+  {% for br in b %}
+  <div id="home" class="card">
+  <h2>{{br.text}}<a id="warn" href=" {% url 'post_detail/' br.nickname %}"><button class="btn btn-warning">click to view</button></a> 
+      <p><a id="danger" href="{% url 'pdelete/' br.pk %}"><button class="btn btn-danger">Delete Post</button></a></p>
+  
+  </h2>
+  </div>
+  {% endfor %}
+ </div>
+</html>
+{% endblock %}
