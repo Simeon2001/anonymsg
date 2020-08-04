@@ -1,10 +1,22 @@
 {% extends 'msg/base.html' %}
 {% block content %}
+<style>
+  /*#id_username,#id_password {
+    float: right;
+    font-size: 6px;
+    padding-top: 5px;
+  }*/
+  
+ p label {
+    float: left;
+    color: white;
+  }
+</style>
 <div class="container-fluid card border border-primary rounded-bottom bg-transparent">
   <h1>Log-in</h1>
   <p>Please, use the following form to log-in:</p>
   <form action="." method="post">
-  {{ form.as_p }}
+  {{ form }}
   {% csrf_token %}
   <p><input type="submit" value="Log in" class="btn btn-success"></p>
   </form>

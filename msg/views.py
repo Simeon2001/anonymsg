@@ -24,6 +24,7 @@ def IndexView (request):
         current_user = request.user
         a = current_user.id
         b = Post.objects.filter(name_id = a)
+        #b = Post.objects.all()
         return render (request, 'msg/index.html', {'b':b})
         
     else:
@@ -31,19 +32,21 @@ def IndexView (request):
         
 #comments section
 def postr (request,pk):
+    current_user = request.user
+    ad = current_user.id
     post = Post.objects.get(nickname=pk)
     comm = None
     if request.method == 'POST':
-        cform = CommentForm(request.POST)
-        if cform.is_valid():
-            comm = cform.save(commit=False)
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comm = form.save(commit=False)
             comm.post = post
             comm.save()
     
     else:
-	    cform = CommentForm()
+	    form = CommentForm()
     
-    return render(request,'msg/post.html',{'post':post,'comm':comm,'cform':cform})
+    return render(request,'msg/post.html',{'post':post,'comm':comm,'form':form,'ad':ad})
 #view comments
 @login_required(login_url='login')    
 def comment_lock (request,pi):

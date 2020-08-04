@@ -1,7 +1,6 @@
 {% extends 'msg/base.html' %}
 {% block title %}<title>{{ post.text }}</title>{% endblock %}
 {% block content %}
-
 <style>
   #postt {
     margin-top: 6px;
@@ -38,7 +37,9 @@
 <h3 id="lar" style="color:white">{{post.date_created}}</h3>
 </div>
 {% if user.is_authenticated %}
+{% if ad == post.name_id %}
 <a id="btc" class="btn btn-primary" href="{% url 'comment_lock/' post.id %}">see comment</a>
+{% endif %}
 {% else %}
 <h1>        </h1>
 {% endif %}
@@ -56,11 +57,11 @@
 {% endwith %}
 <h3 style="color:gold">Write Your Comment</h3>
 <form action="" method="post">
-{{ cform.as_p }}
-{% csrf_token %}
-<input id="commt" style="margin-bottom:6px" class="btn btn-success" type="submit" value="Add comment">
+  {{ form }}
+  {% csrf_token %}
+  <input id="commt" style="margin-bottom:6px" class="btn btn-success" type="submit" value="Add comment">
 </form>
-</div>
+
 {% endblock %}
 
 
