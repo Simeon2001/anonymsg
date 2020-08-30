@@ -1,5 +1,6 @@
 {% extends 'msg/base.html' %}
 {% block content %}
+
 <style>
   /*#id_username,#id_password1,#id_password2 {
     float: right;
@@ -13,11 +14,11 @@
   }
 </style>
 <div id class="container-fluid card border border-primary rounded-bottom bg-transparent">
-
+{% load crispy_forms_tags %}
 <form method="POST" class="uniForm">
     
     {% csrf_token %}
-      {{ form }}
+      {{ form|crispy }}
     <button type="submit" class="btn btn-success">Register</button>
 </form>
 </div>

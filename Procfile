@@ -1,1 +1,1 @@
-web: gunicorn sif.wsgi --log-file -
+web: gunicorn ano.wsgi --log-file -

@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['127.0.0.1','anonymsg.herokuapp.com','192.168.43.1']
 
 INSTALLED_APPS = [
     'msg',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

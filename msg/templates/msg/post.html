@@ -1,6 +1,7 @@
 {% extends 'msg/base.html' %}
 {% block title %}<title>{{ post.text }}</title>{% endblock %}
 {% block content %}
+{% load crispy_forms_tags %}
 <style>
   #postt {
     margin-top: 6px;
@@ -57,7 +58,7 @@
 {% endwith %}
 <h3 style="color:gold">Write Your Comment</h3>
 <form action="" method="post">
-  {{ form }}
+  {{ form|crispy }}
   {% csrf_token %}
   <input id="commt" style="margin-bottom:6px" class="btn btn-success" type="submit" value="Add comment">
 </form>
