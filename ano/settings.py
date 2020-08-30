@@ -124,6 +124,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'msg/static'),
 )
+
 LOGIN_REDIRECT_URL = 'Home/'
 LOGOUT_REDIRECT_URL = 'logout/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
